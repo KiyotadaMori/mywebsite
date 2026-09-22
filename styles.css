@@ -144,18 +144,15 @@ body[data-lang="ja"] .lang-ja { display: initial; }
   border-radius: var(--radius);
   background: var(--surface);
 }
-.monogram {
-  display: grid;
-  place-items: center;
-  width: 96px;
-  height: 96px;
+.profile-photo {
+  display: block;
+  width: 132px;
+  height: 132px;
   margin-bottom: 34px;
   border-radius: 50%;
-  background: var(--accent);
-  color: white;
-  font-size: 28px;
-  font-weight: 800;
-  letter-spacing: .04em;
+  object-fit: cover;
+  object-position: center;
+  border: 1px solid var(--line);
 }
 .profile-card dl { margin: 0; }
 .profile-card dl > div {

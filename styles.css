@@ -1285,3 +1285,37 @@ body[data-lang="ja"] .lang-ja{display:initial}
   font-size:10px;
   letter-spacing:.01em;
 }
+
+
+/* Compact contact section */
+.contact-inner{
+  padding:84px 0 92px;
+}
+
+.contact-inner h2{
+  max-width:none;
+  margin:0;
+  font-size:clamp(38px,4.5vw,60px);
+  line-height:1;
+  font-weight:600;
+  letter-spacing:-.045em;
+}
+
+.contact-actions{
+  margin-top:34px;
+  gap:22px;
+}
+
+@media (max-width:640px){
+  .contact-inner{
+    padding:72px 0 78px;
+  }
+
+  .contact-inner h2{
+    font-size:40px;
+  }
+
+  .contact-actions{
+    margin-top:28px;
+  }
+}

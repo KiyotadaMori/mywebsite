@@ -1255,3 +1255,18 @@ body[data-lang="ja"] .lang-ja{display:initial}
     border-radius:20px;
   }
 }
+
+
+/* Experience refinement */
+.experience-heading{
+  display:block;
+}
+
+.timeline-highlight{
+  color:var(--blue);
+  font-weight:600;
+}
+
+.timeline-item p strong.timeline-highlight{
+  color:var(--blue);
+}

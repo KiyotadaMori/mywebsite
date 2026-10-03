@@ -969,3 +969,84 @@ body[data-lang="ja"] .lang-ja{display:initial}
     justify-content:center;
   }
 }
+
+/* Full-width Experience */
+.about-layout-single{
+  display:block;
+}
+
+.about-layout-single .timeline{
+  width:100%;
+}
+
+.about-layout-single .timeline-item{
+  grid-template-columns:190px minmax(0,1fr);
+}
+
+/* Selected milestones: concise, not an awards catalog */
+.milestones{
+  margin-top:72px;
+}
+
+.milestones-title{
+  margin:0 0 24px;
+  color:var(--secondary);
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.milestone-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+}
+
+.milestone-card{
+  min-height:210px;
+  padding:28px;
+  border:1px solid var(--border);
+  border-radius:24px;
+  background:var(--surface);
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+}
+
+.milestone-year{
+  margin-bottom:auto;
+  color:var(--secondary);
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.04em;
+}
+
+.milestone-card h3{
+  margin:34px 0 9px;
+  font-size:clamp(24px,2.3vw,34px);
+  line-height:1.1;
+  font-weight:600;
+  letter-spacing:-.035em;
+}
+
+.milestone-card p{
+  margin:0;
+  color:var(--secondary);
+  font-size:14px;
+  line-height:1.6;
+}
+
+@media (max-width:640px){
+  .about-layout-single .timeline-item{
+    grid-template-columns:1fr;
+  }
+
+  .milestone-grid{
+    grid-template-columns:1fr;
+  }
+
+  .milestone-card{
+    min-height:190px;
+  }
+}

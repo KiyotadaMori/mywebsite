@@ -1,220 +1,281 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Kiyotada Mori — Ph.D. student at The University of Osaka researching spoken dialogue systems, response latency, selective listening, and real-time human–AI interaction." />
-  <meta name="theme-color" content="#ffffff" />
-  <title>Kiyotada Mori — Spoken Dialogue Systems</title>
+  <meta name="description" content="森 清忠 / Kiyotada Mori — 大阪大学大学院基礎工学研究科。音声対話システム、応答遅延、選択的聴取、リアルタイムな人間–AIインタラクションを研究。" />
+  <meta name="theme-color" content="#f2f0eb" />
+  <title>森 清忠 — Kiyotada Mori</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body data-lang="en">
+<body>
   <header class="site-header">
-    <div class="nav-shell">
-      <a class="brand" href="#top">Kiyotada Mori</a>
-      <nav class="nav" aria-label="Primary navigation">
-        <a href="#research"><span class="lang-en">Research</span><span class="lang-ja">研究</span></a>
-        <a href="#publications"><span class="lang-en">Publications</span><span class="lang-ja">業績</span></a>
-        <a href="#experience"><span class="lang-en">Experience</span><span class="lang-ja">経歴</span></a>
-        <a href="https://www.overleaf.com/read/tkjzhsxjyjbm#6e20ff" target="_blank" rel="noreferrer">CV ↗</a>
-        <button id="language-toggle" class="language-toggle" type="button" aria-label="Switch language">日本語</button>
-      </nav>
-    </div>
+    <a class="brand" href="#top" aria-label="森 清忠 ホーム">
+      <span class="brand-jp">森 清忠</span>
+      <span class="brand-en">KIYOTADA MORI</span>
+    </a>
+
+    <nav class="nav" aria-label="メインナビゲーション">
+      <a href="#research">研究</a>
+      <a href="#works">業績</a>
+      <a href="#profile">経歴</a>
+      <a href="https://www.overleaf.com/read/tkjzhsxjyjbm#6e20ff" target="_blank" rel="noreferrer">CV ↗</a>
+    </nav>
   </header>
 
   <main id="top">
-    <section class="hero shell">
-      <div class="hero-copy">
-        <p class="kicker"><span class="lang-en">Ph.D. Student · Spoken Dialogue Systems</span><span class="lang-ja">博士後期課程 · 音声対話システム</span></p>
-        <h1>Kiyotada<br>Mori.</h1>
-        <p class="hero-ja">森 清忠</p>
-        <p class="lead lang-en">
-          I research real-time spoken dialogue systems at The University of Osaka,
-          focusing on response latency, response quality, selective listening,
-          and human cognitive mechanisms for human–AI interaction.
-        </p>
-        <p class="lead lang-ja">
-          大阪大学大学院基礎工学研究科で、リアルタイム音声対話システムを研究しています。
-          応答遅延・応答品質、選択的聴取、人間の認知機構を中心に、
-          人間とAIの自然なインタラクションを探究しています。
-        </p>
-        <div class="hero-actions">
-          <a class="pill primary" href="#research"><span class="lang-en">Explore research</span><span class="lang-ja">研究を見る</span></a>
-          <a class="pill secondary" href="https://www.overleaf.com/read/tkjzhsxjyjbm#6e20ff" target="_blank" rel="noreferrer">CV ↗</a>
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-meta reveal">
+          <span>RESEARCHER / PHD STUDENT</span>
+          <span>OSAKA, JAPAN</span>
         </div>
-      </div>
-      <figure class="portrait-wrap">
-        <img class="portrait" src="profile.jpg" alt="Portrait of Kiyotada Mori" />
-      </figure>
-    </section>
 
-    <section class="intro-band">
-      <div class="shell statement">
-        <p class="lang-en">Building dialogue systems that can respond <em>before waiting feels like waiting.</em></p>
-        <p class="lang-ja">「待っている」と感じる前に応答できる対話システムを目指しています。</p>
-      </div>
-    </section>
+        <div class="hero-title reveal">
+          <p class="hero-kicker">Spoken Dialogue Systems / Human–AI Interaction</p>
+          <h1><span>森</span><span>清忠</span></h1>
+          <p class="roman">KIYOTADA MORI</p>
+        </div>
 
-    <section id="research" class="section shell">
-      <div class="section-head">
-        <p class="section-label"><span class="lang-en">Research</span><span class="lang-ja">研究</span></p>
-        <h2><span class="lang-en">Making spoken interaction faster, smarter, and more human-aware.</span><span class="lang-ja">より速く、賢く、人間の知覚に沿った音声対話へ。</span></h2>
-      </div>
+        <figure class="hero-photo reveal">
+          <img src="IMG_6565_SnapseedCopy.jpg" alt="森 清忠のポートレート" />
+          <figcaption>Portrait / 2026</figcaption>
+        </figure>
 
-      <div class="feature-grid">
-        <article class="feature-card feature-large">
-          <div>
-            <p class="index">01</p>
-            <h3><span class="lang-en">Response Prefetching</span><span class="lang-ja">応答プリフェッチ</span></h3>
-            <p class="lang-en">Generating candidate responses from partial utterances so a dialogue system can reduce perceived latency without sacrificing response quality.</p>
-            <p class="lang-ja">部分発話から応答候補を先行生成し、品質を保ちながら体感遅延を短縮する研究です。</p>
+        <div class="hero-copy reveal">
+          <p>
+            大阪大学大学院基礎工学研究科の博士後期課程で、
+            <strong>リアルタイム音声対話システム</strong>を研究しています。
+            応答遅延、応答品質、選択的聴取、人間の認知機構を横断し、
+            人とAIが自然に会話できるインタラクションを設計します。
+          </p>
+          <div class="hero-links">
+            <a href="#research">研究を見る ↓</a>
+            <a href="https://www.overleaf.com/read/tkjzhsxjyjbm#6e20ff" target="_blank" rel="noreferrer">CVを開く ↗</a>
           </div>
-          <p class="feature-word">Latency</p>
-        </article>
+        </div>
 
-        <article class="feature-card">
-          <p class="index">02</p>
-          <h3><span class="lang-en">Selective Listening</span><span class="lang-ja">選択的聴取</span></h3>
-          <p class="lang-en">Studying what people actually hear during interaction to rethink ASR evaluation for spoken dialogue systems.</p>
-          <p class="lang-ja">対話中に人間が実際に何を聞いているかを分析し、音声対話向けASR評価を再考します。</p>
-        </article>
-
-        <article class="feature-card dark">
-          <p class="index">03</p>
-          <h3><span class="lang-en">Human Cognition</span><span class="lang-ja">人間の認知</span></h3>
-          <p class="lang-en">Using perceptual and cognitive signals to understand real-time human–AI interaction and guide system design.</p>
-          <p class="lang-ja">知覚・認知の観点からリアルタイムな人間–AI対話を捉え、システム設計につなげます。</p>
-        </article>
+        <div class="hero-index" aria-hidden="true">01</div>
       </div>
     </section>
 
-    <section id="publications" class="section shell">
-      <div class="section-head split">
+    <section class="manifesto">
+      <div class="manifesto-track" aria-hidden="true">
+        <span>DIALOGUE / LATENCY / COGNITION / INTERACTION /</span>
+        <span>DIALOGUE / LATENCY / COGNITION / INTERACTION /</span>
+      </div>
+      <div class="manifesto-inner reveal">
+        <p class="eyebrow">RESEARCH STATEMENT</p>
+        <h2>
+          「待つ」ことを感じる前に、<br />
+          対話が次へ進んでいる状態をつくる。
+        </h2>
+        <p class="manifesto-note">
+          速さだけではなく、応答の妥当性と、人間が実際にどう知覚しているかまで含めて設計する。
+        </p>
+      </div>
+    </section>
+
+    <section id="research" class="section research-section">
+      <div class="section-top reveal">
         <div>
-          <p class="section-label"><span class="lang-en">Selected work</span><span class="lang-ja">主要業績</span></p>
-          <h2><span class="lang-en">Publications.</span><span class="lang-ja">研究業績。</span></h2>
+          <p class="eyebrow">SELECTED RESEARCH</p>
+          <h2>研究テーマ</h2>
         </div>
-        <a class="quiet-link" href="https://www.overleaf.com/read/tkjzhsxjyjbm#6e20ff" target="_blank" rel="noreferrer"><span class="lang-en">Full CV</span><span class="lang-ja">CV全文</span> ↗</a>
+        <p class="section-number">02 — 04</p>
       </div>
 
-      <div class="pub-list">
-        <article class="pub">
-          <div class="pub-year">2026</div>
-          <div class="pub-main">
-            <p class="venue">AACL-IJCNLP 2026 · Student Research Workshop</p>
-            <h3>Analyzing Warrant Evaluation and Review-Elongation Sensitivity in Argument-Based Substantiation Metrics for Scientific Peer Review</h3>
-            <p><strong>K. Mori</strong>, S. Tanaka, T. Hirasawa, T. Kozuno, K. Yoshino, Y. Ushiku</p>
+      <div class="research-list">
+        <article class="research-project reveal">
+          <div class="project-no">01</div>
+          <div class="project-main">
+            <p class="project-tag">LATENCY / GENERATION</p>
+            <h3>応答プリフェッチ</h3>
+            <p>
+              ユーザの発話が終わる前から、部分発話をもとに複数の応答候補を生成。
+              意味類似度や予測信頼度を使って、応答品質を保ちながら体感遅延を削減します。
+            </p>
           </div>
-          <div class="pub-status"><span class="lang-en">Accepted</span><span class="lang-ja">採択</span></div>
+          <div class="project-word">PREFETCH</div>
         </article>
 
-        <article class="pub">
-          <div class="pub-year">2025</div>
-          <div class="pub-main">
-            <p class="venue">Interspeech 2025</p>
-            <h3>What Do Humans Hear When Interacting? Experiments on Selective Listening for Evaluating ASR of Spoken Dialogue Systems</h3>
-            <p><strong>K. Mori</strong>, S. Kawano, C. Liu, C. T. Ishi, A. G. Contreras, K. Yoshino</p>
+        <article class="research-project reveal">
+          <div class="project-no">02</div>
+          <div class="project-main">
+            <p class="project-tag">PERCEPTION / ASR</p>
+            <h3>選択的聴取と音声認識評価</h3>
+            <p>
+              人間は対話中に音声のすべてを等しく聞いているわけではありません。
+              人が実際に聞いている箇所に着目し、音声対話システムに適したASR評価を再設計します。
+            </p>
           </div>
-          <div class="pub-status">pp. 1753–1757</div>
+          <div class="project-word">LISTEN</div>
         </article>
 
-        <article class="pub">
-          <div class="pub-year">2025</div>
-          <div class="pub-main">
-            <p class="venue">Interspeech 2025</p>
-            <h3>Dialogue Response Prefetching Based on Semantic Similarity and Prediction Confidence of Language Model</h3>
-            <p><strong>K. Mori</strong>, S. Kawano, A. G. Contreras, K. Yoshino</p>
+        <article class="research-project reveal">
+          <div class="project-no">03</div>
+          <div class="project-main">
+            <p class="project-tag">COGNITION / BIOSIGNAL</p>
+            <h3>人間の認知とリアルタイム対話</h3>
+            <p>
+              人間の知覚・認知メカニズムを、音声対話システムの設計と評価につなげます。
+              トレント大学では生体信号・音声処理にも取り組みました。
+            </p>
           </div>
-          <div class="pub-status">pp. 3045–3049</div>
+          <div class="project-word">COGNITION</div>
         </article>
       </div>
     </section>
 
-    <section id="experience" class="section shell">
-      <div class="section-head">
-        <p class="section-label"><span class="lang-en">Experience</span><span class="lang-ja">経歴</span></p>
-        <h2><span class="lang-en">Research across dialogue, cognition, and evaluation.</span><span class="lang-ja">対話・認知・評価を横断する研究経験。</span></h2>
+    <section id="works" class="section works-section">
+      <div class="section-top reveal">
+        <div>
+          <p class="eyebrow">SELECTED PUBLICATIONS</p>
+          <h2>主要業績</h2>
+        </div>
+        <a class="section-link" href="https://www.overleaf.com/read/tkjzhsxjyjbm#6e20ff" target="_blank" rel="noreferrer">FULL CV ↗</a>
       </div>
 
-      <div class="timeline">
-        <article class="timeline-row">
-          <time>2026—2029</time>
-          <div>
-            <h3><span class="lang-en">The University of Osaka</span><span class="lang-ja">大阪大学</span></h3>
-            <p><span class="lang-en">Ph.D. in Engineering · Graduate School of Engineering Science</span><span class="lang-ja">博士後期課程 · 大学院基礎工学研究科</span></p>
+      <div class="works-grid">
+        <article class="work-card featured reveal">
+          <div class="work-top">
+            <span>INTERSPEECH 2025</span>
+            <span>FIRST AUTHOR</span>
           </div>
+          <div class="work-body">
+            <p class="work-index">P.01</p>
+            <h3>What Do Humans Hear When Interacting?</h3>
+            <p class="work-subtitle">Experiments on Selective Listening for Evaluating ASR of Spoken Dialogue Systems</p>
+          </div>
+          <p class="work-authors"><strong>K. Mori</strong>, S. Kawano, C. Liu, C. T. Ishi, A. G. Contreras, K. Yoshino</p>
         </article>
-        <article class="timeline-row">
-          <time>2025—2026</time>
-          <div>
-            <h3><span class="lang-en">Institute of Science Tokyo</span><span class="lang-ja">東京科学大学</span></h3>
-            <p><span class="lang-en">Research Assistant · Real-time spoken dialogue systems with response prefetching</span><span class="lang-ja">リサーチアシスタント · 応答プリフェッチを用いたリアルタイム音声対話</span></p>
+
+        <article class="work-card reveal">
+          <div class="work-top">
+            <span>INTERSPEECH 2025</span>
+            <span>FIRST AUTHOR</span>
           </div>
+          <div class="work-body">
+            <p class="work-index">P.02</p>
+            <h3>Dialogue Response Prefetching</h3>
+            <p class="work-subtitle">Based on Semantic Similarity and Prediction Confidence of Language Model</p>
+          </div>
+          <p class="work-authors"><strong>K. Mori</strong>, S. Kawano, A. G. Contreras, K. Yoshino</p>
         </article>
-        <article class="timeline-row">
-          <time>2025—2026</time>
-          <div>
-            <h3>OMRON SINIC X</h3>
-            <p><span class="lang-en">Research Intern / Part-time Researcher · Scientific peer-review evaluation</span><span class="lang-ja">研究インターン / 非常勤研究員 · 科学論文査読の評価手法</span></p>
+
+        <article class="work-card inverse reveal">
+          <div class="work-top">
+            <span>AACL-IJCNLP 2026</span>
+            <span>SRW / ACCEPTED</span>
           </div>
-        </article>
-        <article class="timeline-row">
-          <time>2025</time>
-          <div>
-            <h3><span class="lang-en">University of Trento</span><span class="lang-ja">トレント大学</span></h3>
-            <p><span class="lang-en">Visiting Research Student · Erasmus+ International Credit Mobility</span><span class="lang-ja">客員研究学生 · Erasmus+ International Credit Mobility</span></p>
+          <div class="work-body">
+            <p class="work-index">P.03</p>
+            <h3>Argument-Based Substantiation Metrics</h3>
+            <p class="work-subtitle">Analyzing Warrant Evaluation and Review-Elongation Sensitivity in Scientific Peer Review</p>
           </div>
-        </article>
-        <article class="timeline-row">
-          <time>2024—2026</time>
-          <div>
-            <h3><span class="lang-en">Nara Institute of Science and Technology</span><span class="lang-ja">奈良先端科学技術大学院大学</span></h3>
-            <p><span class="lang-en">Master of Engineering · Information Science</span><span class="lang-ja">修士（工学） · 情報科学領域</span></p>
-          </div>
-        </article>
-        <article class="timeline-row">
-          <time>2021—2024</time>
-          <div>
-            <h3><span class="lang-en">Kochi University</span><span class="lang-ja">高知大学</span></h3>
-            <p><span class="lang-en">B.Sc.Eng. · Completed the bachelor's program one year early</span><span class="lang-ja">学士 · 早期卒業制度により1年短縮して修了</span></p>
-          </div>
+          <p class="work-authors"><strong>K. Mori</strong>, S. Tanaka, T. Hirasawa, T. Kozuno, K. Yoshino, Y. Ushiku</p>
         </article>
       </div>
     </section>
 
-    <section class="section shell compact-section">
-      <div class="two-up">
-        <div class="info-panel">
-          <p class="section-label"><span class="lang-en">Funding & recognition</span><span class="lang-ja">研究支援・受賞</span></p>
-          <h3>BOOST</h3>
-          <p><span class="lang-en">Next-Generation AI Talent Development Project, 2026–2029.</span><span class="lang-ja">次世代AI人材育成プロジェクト、2026–2029。</span></p>
-          <p class="small"><span class="lang-en">Research Encouragement Award · Kochi University Individual Activity Excellence Award · Shikoku Branch Incentive Award · FIT Encouragement Award</span><span class="lang-ja">研究奨励賞 · 高知大学 個人活動優秀賞 · 四国支部奨励賞 · FIT奨励賞</span></p>
+    <section id="profile" class="section profile-section">
+      <div class="profile-title reveal">
+        <p class="eyebrow">PROFILE / EXPERIENCE</p>
+        <h2>研究者としての<br />これまで。</h2>
+      </div>
+
+      <div class="profile-grid">
+        <div class="profile-sticky reveal">
+          <p class="profile-lead">
+            音声・対話・認知を軸に、複数の研究環境を横断してきました。
+          </p>
+          <div class="profile-facts">
+            <div><span>所属</span><strong>大阪大学</strong></div>
+            <div><span>課程</span><strong>博士後期課程</strong></div>
+            <div><span>専門</span><strong>音声対話システム</strong></div>
+          </div>
         </div>
-        <div class="info-panel pale">
-          <p class="section-label"><span class="lang-en">International</span><span class="lang-ja">国際経験</span></p>
-          <h3><span class="lang-en">Japan · Italy · Morocco</span><span class="lang-ja">日本 · イタリア · モロッコ</span></h3>
-          <p><span class="lang-en">Research and international engagement across Europe and North Africa, with North America training planned for 2027.</span><span class="lang-ja">欧州・北アフリカで研究・国際交流を経験。2027年には北米研修を予定しています。</span></p>
+
+        <div class="timeline">
+          <article class="timeline-item reveal">
+            <time>2026 — 2029</time>
+            <div>
+              <h3>大阪大学</h3>
+              <p>大学院基礎工学研究科 博士後期課程</p>
+            </div>
+          </article>
+          <article class="timeline-item reveal">
+            <time>2025 — 2026</time>
+            <div>
+              <h3>東京科学大学</h3>
+              <p>Research Assistant / リアルタイム音声対話システム</p>
+            </div>
+          </article>
+          <article class="timeline-item reveal">
+            <time>2025 — 2026</time>
+            <div>
+              <h3>OMRON SINIC X</h3>
+              <p>Research Intern / Part-time Researcher</p>
+            </div>
+          </article>
+          <article class="timeline-item reveal">
+            <time>2025</time>
+            <div>
+              <h3>University of Trento</h3>
+              <p>Visiting Research Student / Erasmus+</p>
+            </div>
+          </article>
+          <article class="timeline-item reveal">
+            <time>2024 — 2026</time>
+            <div>
+              <h3>奈良先端科学技術大学院大学</h3>
+              <p>修士（工学） / 情報科学領域</p>
+            </div>
+          </article>
+          <article class="timeline-item reveal">
+            <time>2021 — 2024</time>
+            <div>
+              <h3>高知大学</h3>
+              <p>学士課程を1年早く修了</p>
+            </div>
+          </article>
         </div>
+      </div>
+    </section>
+
+    <section class="recognition">
+      <div class="recognition-grid">
+        <article class="recognition-card reveal">
+          <p class="eyebrow">FUNDING</p>
+          <p class="recognition-key">BOOST</p>
+          <p>次世代AI人材育成プロジェクト<br />2026 — 2029</p>
+        </article>
+        <article class="recognition-card light reveal">
+          <p class="eyebrow">AWARDS</p>
+          <p class="recognition-key">04</p>
+          <p>研究奨励賞 / 個人活動優秀賞<br />四国支部奨励賞 / FIT奨励賞</p>
+        </article>
       </div>
     </section>
 
     <section class="contact">
-      <div class="shell contact-inner">
-        <p class="section-label"><span class="lang-en">Contact</span><span class="lang-ja">連絡先</span></p>
-        <h2><span class="lang-en">Research, collaboration,<br>or just a good question.</span><span class="lang-ja">研究、共同研究、<br>あるいは面白い問いについて。</span></h2>
+      <div class="contact-no" aria-hidden="true">05</div>
+      <div class="contact-inner reveal">
+        <p class="eyebrow">CONTACT</p>
+        <h2>研究、共同研究、<br />面白い問いについて。</h2>
         <div class="contact-links">
-          <a href="mailto:u392503k@ecs.osaka-u.ac.jp">University email ↗</a>
-          <a href="mailto:mr.kiyotada@gmail.com">Personal email ↗</a>
-          <a href="https://github.com/KiyotadaMori" target="_blank" rel="noreferrer">GitHub ↗</a>
+          <a href="mailto:u392503k@ecs.osaka-u.ac.jp">UNIVERSITY MAIL ↗</a>
+          <a href="mailto:mr.kiyotada@gmail.com">PERSONAL MAIL ↗</a>
+          <a href="https://github.com/KiyotadaMori" target="_blank" rel="noreferrer">GITHUB ↗</a>
           <a href="https://www.overleaf.com/read/tkjzhsxjyjbm#6e20ff" target="_blank" rel="noreferrer">CV ↗</a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer shell">
-    <span>© <span id="year"></span> Kiyotada Mori</span>
-    <span>The University of Osaka · Spoken Dialogue Systems</span>
+  <footer class="site-footer">
+    <span>© <span id="year"></span> KIYOTADA MORI</span>
+    <span>RESEARCHER / SPOKEN DIALOGUE SYSTEMS</span>
   </footer>
 
   <script src="script.js"></script>

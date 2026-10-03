@@ -1270,3 +1270,18 @@ body[data-lang="ja"] .lang-ja{display:initial}
 .timeline-item p strong.timeline-highlight{
   color:var(--blue);
 }
+
+
+/* Quiet footer */
+.site-footer{
+  background:var(--black);
+  color:#6e6e73;
+  border-top:1px solid rgba(255,255,255,.06);
+}
+
+.footer-inner{
+  min-height:58px;
+  justify-content:flex-start;
+  font-size:10px;
+  letter-spacing:.01em;
+}

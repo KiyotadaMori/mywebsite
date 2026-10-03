@@ -1050,3 +1050,208 @@ body[data-lang="ja"] .lang-ja{display:initial}
     min-height:190px;
   }
 }
+
+
+/* QueryLift-inspired ambient motion: restrained geometric objects, no heavy gradients */
+.hero{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+}
+
+.hero-shell{
+  position:relative;
+  z-index:2;
+}
+
+.ambient-stage{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  overflow:hidden;
+}
+
+.ambient-ring{
+  position:absolute;
+  display:block;
+  border:1px solid rgba(29,29,31,.085);
+  border-radius:50%;
+  will-change:transform;
+}
+
+.ring-one{
+  width:clamp(420px,42vw,720px);
+  aspect-ratio:1;
+  right:-11vw;
+  top:7%;
+  animation:ambientFloatOne 18s ease-in-out infinite alternate;
+}
+
+.ring-two{
+  width:clamp(250px,26vw,440px);
+  aspect-ratio:1;
+  left:39%;
+  bottom:-17%;
+  border-color:rgba(0,113,227,.13);
+  animation:ambientFloatTwo 22s ease-in-out infinite alternate;
+}
+
+.ambient-dot{
+  position:absolute;
+  display:block;
+  border-radius:50%;
+  will-change:transform;
+}
+
+.dot-blue{
+  width:18px;
+  height:18px;
+  right:18%;
+  top:18%;
+  background:var(--blue);
+  opacity:.76;
+  box-shadow:0 18px 44px rgba(0,113,227,.18);
+  animation:ambientDotBlue 12s ease-in-out infinite alternate;
+}
+
+.dot-dark{
+  width:9px;
+  height:9px;
+  left:47%;
+  top:32%;
+  background:var(--text);
+  opacity:.34;
+  animation:ambientDotDark 15s ease-in-out infinite alternate;
+}
+
+@keyframes ambientFloatOne{
+  from{transform:translate3d(0,0,0) rotate(0deg)}
+  to{transform:translate3d(-42px,32px,0) rotate(8deg)}
+}
+
+@keyframes ambientFloatTwo{
+  from{transform:translate3d(0,0,0) scale(1)}
+  to{transform:translate3d(50px,-34px,0) scale(1.08)}
+}
+
+@keyframes ambientDotBlue{
+  from{transform:translate3d(0,0,0)}
+  to{transform:translate3d(-54px,68px,0)}
+}
+
+@keyframes ambientDotDark{
+  from{transform:translate3d(0,0,0)}
+  to{transform:translate3d(36px,-46px,0)}
+}
+
+/* Experience header: use the full canvas and surface early graduation as a single accent */
+.experience-heading{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(240px,340px);
+  align-items:end;
+  gap:48px;
+}
+
+.early-grad-badge{
+  min-height:154px;
+  padding:24px 26px;
+  border-radius:24px;
+  background:var(--blue);
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  box-shadow:0 18px 45px rgba(0,113,227,.13);
+}
+
+.early-grad-year{
+  margin-bottom:auto;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.08em;
+  opacity:.72;
+}
+
+.early-grad-badge strong{
+  font-size:20px;
+  line-height:1.2;
+  letter-spacing:-.025em;
+}
+
+.early-grad-badge > span:last-child{
+  margin-top:5px;
+  font-size:12px;
+  opacity:.72;
+}
+
+/* Compact highlight strip: only the three high-signal programs */
+.milestones{
+  margin-top:58px;
+}
+
+.milestone-grid{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+}
+
+.milestone-card{
+  min-height:176px;
+  padding:24px;
+  border-radius:22px;
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+}
+
+.milestone-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 18px 44px rgba(0,0,0,.06);
+  border-color:rgba(0,113,227,.18);
+}
+
+.milestone-card h3{
+  margin:26px 0 8px;
+  font-size:clamp(21px,1.8vw,28px);
+}
+
+@media (prefers-reduced-motion:reduce){
+  .ambient-ring,
+  .ambient-dot{
+    animation:none!important;
+  }
+}
+
+@media (max-width:900px){
+  .experience-heading{
+    grid-template-columns:1fr;
+    align-items:start;
+  }
+
+  .early-grad-badge{
+    max-width:420px;
+  }
+
+  .milestone-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+@media (max-width:640px){
+  .ambient-stage{
+    opacity:.7;
+  }
+
+  .ring-one{
+    right:-45%;
+    top:12%;
+  }
+
+  .ring-two{
+    left:42%;
+    bottom:-7%;
+  }
+
+  .early-grad-badge{
+    min-height:140px;
+    border-radius:20px;
+  }
+}

@@ -1319,3 +1319,27 @@ body[data-lang="ja"] .lang-ja{display:initial}
     margin-top:28px;
   }
 }
+
+
+/* Minimal header: identity on the left, language switch only on the right */
+.site-header{
+  border-bottom:0;
+  background:rgba(245,245,247,.62);
+}
+
+.language-nav{
+  gap:0;
+}
+
+.language-toggle{
+  min-width:36px;
+  padding:7px 9px;
+  border-radius:999px;
+  color:var(--secondary);
+  transition:background .2s ease,color .2s ease;
+}
+
+.language-toggle:hover{
+  background:rgba(0,0,0,.05);
+  color:var(--text);
+}

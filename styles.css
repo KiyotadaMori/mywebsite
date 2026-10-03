@@ -1343,3 +1343,139 @@ body[data-lang="ja"] .lang-ja{display:initial}
   background:rgba(0,0,0,.05);
   color:var(--text);
 }
+
+
+/* Portfolio polish: scroll transition + publication interactions */
+.section-transition{
+  position:relative;
+  height:clamp(92px,12vw,170px);
+  overflow:hidden;
+  background:var(--surface);
+  border-top:1px solid rgba(0,0,0,.025);
+  border-bottom:1px solid rgba(0,0,0,.035);
+}
+
+.section-transition span{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate3d(calc(-50% + var(--transition-x, 0px)),calc(-50% + var(--transition-y, 0px)),0);
+  white-space:nowrap;
+  color:rgba(29,29,31,.035);
+  font-size:clamp(82px,15vw,220px);
+  line-height:.75;
+  font-weight:700;
+  letter-spacing:-.075em;
+  user-select:none;
+  will-change:transform;
+}
+
+.publication-row{
+  position:relative;
+  isolation:isolate;
+  padding-left:0;
+  padding-right:0;
+  transition:
+    padding .28s cubic-bezier(.2,.7,.2,1),
+    background .28s ease,
+    border-color .28s ease;
+}
+
+.publication-row::before{
+  content:"";
+  position:absolute;
+  inset:8px -20px;
+  z-index:-1;
+  border-radius:20px;
+  background:rgba(0,113,227,0);
+  transition:background .28s ease;
+}
+
+.publication-row::after{
+  content:"↗";
+  position:absolute;
+  right:4px;
+  top:50%;
+  transform:translate3d(-8px,-50%,0);
+  color:var(--blue);
+  font-size:20px;
+  opacity:0;
+  transition:opacity .22s ease,transform .22s ease;
+}
+
+.publication-row:hover{
+  padding-left:12px;
+  padding-right:38px;
+  border-color:rgba(0,113,227,.14);
+}
+
+.publication-row:hover::before{
+  background:rgba(0,113,227,.035);
+}
+
+.publication-row:hover::after{
+  opacity:.65;
+  transform:translate3d(0,-50%,0);
+}
+
+.publication-row:hover .publication-main h3{
+  color:#111;
+}
+
+.publication-row:hover .publication-meta span:last-child{
+  color:var(--blue);
+}
+
+/* Keep the portrait flatter and more editorial */
+.portrait-frame{
+  box-shadow:0 12px 36px rgba(0,0,0,.045);
+}
+
+.portrait-frame img{
+  transition:transform .7s cubic-bezier(.2,.7,.2,1);
+}
+
+.hero-portrait:hover .portrait-frame img{
+  transform:scale(1.025);
+}
+
+/* Pointer parallax is applied through CSS variables set in script.js */
+.hero{
+  --parallax-x:0px;
+  --parallax-y:0px;
+}
+
+.ring-one{
+  translate:calc(var(--parallax-x) * .38) calc(var(--parallax-y) * .38);
+}
+
+.ring-two{
+  translate:calc(var(--parallax-x) * -.24) calc(var(--parallax-y) * -.24);
+}
+
+.dot-blue{
+  translate:calc(var(--parallax-x) * .7) calc(var(--parallax-y) * .7);
+}
+
+.dot-dark{
+  translate:calc(var(--parallax-x) * -.5) calc(var(--parallax-y) * -.5);
+}
+
+@media (max-width:640px){
+  .section-transition{
+    height:90px;
+  }
+
+  .publication-row::after{
+    display:none;
+  }
+
+  .publication-row:hover{
+    padding-left:0;
+    padding-right:0;
+  }
+
+  .hero-portrait:hover .portrait-frame img{
+    transform:scale(1);
+  }
+}

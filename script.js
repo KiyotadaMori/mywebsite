@@ -38,3 +38,44 @@ if ("IntersectionObserver" in window) {
 } else {
   revealItems.forEach((item) => item.classList.add("is-visible"));
 }
+
+const hero = document.querySelector(".hero");
+const transitionLabel = document.querySelector(".section-transition span");
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+if (hero && !prefersReducedMotion && window.matchMedia("(pointer:fine)").matches) {
+  hero.addEventListener("pointermove", (event) => {
+    const rect = hero.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width - 0.5) * 18;
+    const y = ((event.clientY - rect.top) / rect.height - 0.5) * 18;
+    hero.style.setProperty("--parallax-x", x.toFixed(2) + "px");
+    hero.style.setProperty("--parallax-y", y.toFixed(2) + "px");
+  });
+
+  hero.addEventListener("pointerleave", () => {
+    hero.style.setProperty("--parallax-x", "0px");
+    hero.style.setProperty("--parallax-y", "0px");
+  });
+}
+
+if (transitionLabel && !prefersReducedMotion) {
+  let ticking = false;
+
+  const updateTransition = () => {
+    const rect = transitionLabel.parentElement.getBoundingClientRect();
+    const viewport = window.innerHeight || 1;
+    const progress = Math.max(-1, Math.min(1, (rect.top + rect.height / 2 - viewport / 2) / viewport));
+    transitionLabel.style.setProperty("--transition-x", (progress * -32).toFixed(1) + "px");
+    transitionLabel.style.setProperty("--transition-y", (progress * 7).toFixed(1) + "px");
+    ticking = false;
+  };
+
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      window.requestAnimationFrame(updateTransition);
+      ticking = true;
+    }
+  }, { passive:true });
+
+  updateTransition();
+}

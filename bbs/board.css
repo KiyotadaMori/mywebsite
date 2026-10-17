@@ -82,3 +82,10 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;font-s
 }
 .post-quote:hover{background:#e8f1ff;border-color:#789bc0}
 #reply{scroll-margin-top:84px}
+
+/* Anchored posts are fetched asynchronously; account for the fixed header. */
+.post{scroll-margin-top:92px}
+.post.is-referenced,.post:target{background:#fffbd6;box-shadow:inset 3px 0 0 #c99a19}
+.post:focus{outline:none}
+.post-reference{cursor:pointer}
+@media(max-width:640px){.post{scroll-margin-top:78px}}

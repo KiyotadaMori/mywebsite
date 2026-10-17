@@ -6,10 +6,10 @@
 <meta name="theme-color" content="#efefef">
 <meta name="description" content="Anonymous Japanese bulletin board. One ongoing discussion, no account required.">
 <title>雑談スレッド - Kiyotada Mori BBS</title>
-<link rel="stylesheet" href="board.css?v=20261017-clean">
+<link rel="stylesheet" href="board.css?v=20261017-replyselect">
 <link rel="stylesheet" href="../site-chrome.css?v=20261017-1">
 <script src="config.js?v=20261017-connected" defer></script>
-<script src="board.js?v=20261017-connected" defer></script>
+<script src="board.js?v=20261017-replyselect" defer></script>
 </head>
 <body data-lang="ja">
 <header class="site-header">
@@ -25,7 +25,7 @@
 <div class="bbs-shell">
   <header class="bbs-head">
     <h1><span class="lang-ja">名無しの掲示板</span><span class="lang-en">Anonymous BBS</span></h1>
-    <p><span class="lang-ja">森清忠の個人サイトに併設された雑談掲示板です。研究・技術・教育・その他、自由にどうぞ。</span><span class="lang-en">An anonymous discussion board alongside Kiyotada Mori's personal site. Research, technology, education, and everything else.</span></p>
+    <p><span class="lang-ja">森清忠の個人サイトに併設された匿名掲示板です。</span><span class="lang-en">An anonymous discussion board alongside Kiyotada Mori's personal site.</span></p>
     <p class="bbs-note"><span class="lang-ja">※ 匿名・アカウント不要。個人情報の掲載や迷惑行為はお控えください。</span><span class="lang-en">Anonymous, no account needed. No personal information or spam.</span></p>
   </header>
   <hr>
@@ -44,6 +44,7 @@
     <section id="reply" class="reply">
       <h3><span class="lang-ja">■ 書き込み</span><span class="lang-en">■ Post a reply</span></h3>
       <form id="post-form">
+        <div class="form-field"><label for="reply-target"><span class="lang-ja">返信先：</span><span class="lang-en">Reply to:</span></label><select id="reply-target" aria-label="Reply to a post" disabled><option value="">返信先を選択（任意）</option></select></div>
         <div class="form-field"><label for="post-name"><span class="lang-ja">名前：</span><span class="lang-en">Name:</span></label><input id="post-name" name="author" maxlength="32" placeholder="名無しさん" autocomplete="off"></div>
         <div class="form-field"><label for="post-body"><span class="lang-ja">本文：</span><span class="lang-en">Message:</span></label><textarea required id="post-body" name="body" maxlength="2000" rows="6" placeholder=">>1&#10;こんにちは"></textarea></div>
         <input type="text" tabindex="-1" name="website" autocomplete="off" class="honeypot" aria-hidden="true">

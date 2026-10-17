@@ -55,3 +55,30 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;font-s
 
 .empty{margin:14px 0;color:#555;font-size:13px}
 .thread-links{justify-content:space-between}
+
+/* Progressive reply controls: choose a post or click its compact reply button. */
+.form-field select{
+  width:min(100%,450px);
+  min-height:34px;
+  padding:5px 10px;
+  border:1px solid #858f99;
+  border-radius:5px;
+  background:#fff;
+  color:#1e3140;
+  font-size:13px;
+  cursor:pointer;
+}
+.form-field select:disabled{opacity:.6;cursor:not-allowed}
+.form-field select:focus-visible,.post-quote:focus-visible{outline:2px solid #286ed6;outline-offset:2px}
+.post-quote{
+  margin-left:8px;
+  padding:2px 9px;
+  border:1px solid #bbc4cf;
+  border-radius:5px;
+  color:#305a7e;
+  background:#fafcff;
+  font-size:12px;
+  line-height:1.5;
+}
+.post-quote:hover{background:#e8f1ff;border-color:#789bc0}
+#reply{scroll-margin-top:84px}

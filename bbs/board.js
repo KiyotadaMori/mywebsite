@@ -37,7 +37,46 @@ $("reply-target").addEventListener("change",e=>{
   e.target.value="";
 });
 async function call(path,options={}){const r=await fetch(api+path,options),data=await r.json();if(!r.ok)throw Error(data.error||"Request failed");return data}
-function bodyContent(parent,content){const re=/>>([1-9]\d{0,5})/g;let idx=0,m;while((m=re.exec(content))){parent.append(document.createTextNode(content.slice(idx,m.index)));const a=el("a",m[0]);a.href="#res-"+m[1];parent.append(a);idx=re.lastIndex}parent.append(document.createTextNode(content.slice(idx)))}
+function bodyContent(parent,content){
+  const re=/>>([1-9]\d{0,5})/g;
+  let idx=0,m;
+  while((m=re.exec(content))){
+    parent.append(document.createTextNode(content.slice(idx,m.index)));
+    const a=el("a",m[0],"post-reference");
+    a.href="#res-"+m[1];
+    a.setAttribute("aria-label",tr("レス"+m[1]+"に移動","Go to post "+m[1]));
+    parent.append(a);
+    idx=re.lastIndex;
+  }
+  parent.append(document.createTextNode(content.slice(idx)));
+}
+function navigateToPost(number,addHistory=false,animate=true){
+  if(!Number.isSafeInteger(number)||number<1)return;
+  const target=$("res-"+number);
+  if(!target){
+    status(tr("レス "+number+" は現在表示されていません。","Post "+number+" is not currently available."));
+    return;
+  }
+  if(addHistory&&location.hash!=="#res-"+number)history.pushState(null,"","#res-"+number);
+  document.querySelectorAll(".post.is-referenced").forEach(node=>node.classList.remove("is-referenced"));
+  target.classList.add("is-referenced");
+  target.setAttribute("tabindex","-1");
+  target.scrollIntoView({behavior:animate&&!window.matchMedia("(prefers-reduced-motion: reduce)").matches?"smooth":"auto",block:"start"});
+  target.focus({preventScroll:true});
+}
+function navigateFromHash(animate=false){
+  const match=location.hash.match(/^#res-([1-9]\d{0,5})$/);
+  if(match)navigateToPost(Number(match[1]),false,animate);
+}
+$("post-list").addEventListener("click",event=>{
+  const anchor=event.target.closest("a.post-reference");
+  if(!anchor)return;
+  event.preventDefault();
+  const match=anchor.getAttribute("href").match(/^#res-(\d+)$/);
+  if(match)navigateToPost(Number(match[1]),true);
+});
+window.addEventListener("hashchange",()=>navigateFromHash(true));
+window.addEventListener("popstate",()=>navigateFromHash(true));
 function display(posts){
   latestPosts=posts;
   const list=$("post-list");list.replaceChildren();
@@ -55,6 +94,9 @@ function display(posts){
   }
   $("post-count").textContent=posts.length+" posts";
   updateReplyOptions(posts);
+  if(location.hash.startsWith("#res-")){
+    requestAnimationFrame(()=>navigateFromHash(false));
+  }
 }
 async function refresh(){const data=await call("/api/posts");display(data.posts);$("connection-status").textContent=tr("● 投稿受付中","● Online");}
 $("refresh-posts").onclick=()=>refresh().catch(e=>status(e.message));

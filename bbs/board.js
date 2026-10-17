@@ -1,8 +1,8 @@
 (()=>{"use strict";
 const $=id=>document.getElementById(id),cfg=window.BBS_CONFIG||{},api=String(cfg.apiBase||"").replace(/\/+$/,""),key=cfg.turnstileSitekey||"",ready=api.startsWith("https://")&&!!key;
 let widget=null,token="";const tr=(ja,en)=>document.body.dataset.lang==="en"?en:ja,el=(tag,text,cls)=>{const x=document.createElement(tag);x.textContent=text;if(cls)x.className=cls;return x};
-function language(l){document.body.dataset.lang=l;document.documentElement.lang=l;$("lang-toggle").textContent=l==="ja"?"English":"日本語";localStorage.setItem("site-language",l)}
-language(localStorage.getItem("site-language")==="en"?"en":"ja");$("lang-toggle").onclick=()=>language(document.body.dataset.lang==="ja"?"en":"ja");
+function language(l){document.body.dataset.lang=l;document.documentElement.lang=l;$("lang-toggle").textContent=l==="ja"?"EN":"JP";$("lang-toggle").setAttribute("aria-label",l==="ja"?"Switch to English":"日本語に切り替える");localStorage.setItem("site-language",l)}
+language(localStorage.getItem("site-language")==="en"?"en":"ja");$("year").textContent=new Date().getFullYear();$("lang-toggle").onclick=()=>language(document.body.dataset.lang==="ja"?"en":"ja");
 const status=s=>$("feedback").textContent=s,date=x=>new Date(x*1000).toLocaleString("ja-JP",{hour12:false});
 async function call(path,options={}){const r=await fetch(api+path,options),data=await r.json();if(!r.ok)throw Error(data.error||"Request failed");return data}
 function bodyContent(parent,content){const re=/>>([1-9]\d{0,5})/g;let idx=0,m;while((m=re.exec(content))){parent.append(document.createTextNode(content.slice(idx,m.index)));const a=el("a",m[0]);a.href="#res-"+m[1];parent.append(a);idx=re.lastIndex}parent.append(document.createTextNode(content.slice(idx)))}

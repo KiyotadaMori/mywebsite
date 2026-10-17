@@ -7,17 +7,26 @@
 <meta name="description" content="Anonymous Japanese bulletin board. One ongoing discussion, no account required.">
 <title>雑談スレッド - Kiyotada Mori BBS</title>
 <link rel="stylesheet" href="board.css?v=20261017-2ch">
+<link rel="stylesheet" href="../site-chrome.css?v=20261017-1">
 <script src="config.js" defer></script>
 <script src="board.js?v=20261017-2ch" defer></script>
 </head>
 <body data-lang="ja">
+<header class="site-header">
+  <div class="nav-shell">
+    <a class="brand" href="../" aria-label="Kiyotada Mori home">Kiyotada Mori</a>
+    <nav class="nav language-nav" aria-label="Main navigation">
+      <a class="nav-home" href="../"><span class="lang-en">Home</span><span class="lang-ja">ホーム</span></a>
+      <a class="nav-board" href="./" aria-current="page"><span class="lang-en">BBS</span><span class="lang-ja">掲示板</span></a>
+      <button id="lang-toggle" class="language-toggle" type="button" aria-label="Switch to English">EN</button>
+    </nav>
+  </div>
+</header>
 <div class="bbs-shell">
-  <nav class="top-links" aria-label="Navigation">
-    <a href="../">[HOME]</a>
+  <nav class="top-links" aria-label="Thread links">
     <a href="#thread">[THREAD]</a>
     <a href="#reply">[WRITE]</a>
     <a href="mailto:mr.kiyotada@gmail.com?subject=BBS%20Report">[REPORT]</a>
-    <button id="lang-toggle" type="button" aria-label="Switch language">English</button>
   </nav>
   <header class="bbs-head">
     <h1><span class="lang-ja">名無しの掲示板</span><span class="lang-en">Anonymous BBS</span></h1>
@@ -61,7 +70,12 @@
     </section>
   </main>
   <hr>
-  <footer><a href="../">▲ <span class="lang-ja">個人サイトに戻る</span><span class="lang-en">Back to research website</span></a><span>© Kiyotada Mori BBS — independent from 2channel / 5channel</span></footer>
+  <p class="bbs-legal"><span class="lang-ja">この掲示板は2ちゃんねる・5ちゃんねるとは無関係の個人運営サイトです。</span><span class="lang-en">This independently run board is not affiliated with 2channel or 5channel.</span></p>
 </div>
+<footer class="site-footer">
+  <div class="section-shell footer-inner">
+    <span>© <span id="year"></span> Kiyotada Mori</span>
+  </div>
+</footer>
 </body>
 </html>

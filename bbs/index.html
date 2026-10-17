@@ -1,62 +1,67 @@
 <!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Anonymous bulletin board for Kiyotada Mori's personal site.">
-  <meta name="theme-color" content="#f5f5f7">
-  <title>BBS — Kiyotada Mori</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="board.css?v=1">
-  <script src="config.js" defer></script><script src="board.js" defer></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#efefef">
+<meta name="description" content="Anonymous Japanese bulletin board. One ongoing discussion, no account required.">
+<title>雑談スレッド - Kiyotada Mori BBS</title>
+<link rel="stylesheet" href="board.css?v=20261017-2ch">
+<script src="config.js" defer></script>
+<script src="board.js?v=20261017-2ch" defer></script>
 </head>
 <body data-lang="ja">
-<header class="topbar"><div class="shell nav">
-  <a class="brand" href="../">Kiyotada Mori <span class="dim">/ BBS</span></a>
-  <div class="nav-right"><a href="../"><span class="lang-ja">研究サイト</span><span class="lang-en">Research site</span> ↗</a><button type="button" id="lang-toggle">EN</button></div>
-</div></header>
-<main class="shell">
-  <section class="hero"><p class="eyebrow">ANONYMOUS TEXT BOARD / 001</p>
-    <h1><span class="lang-ja">掲示板。</span><span class="lang-en">Bulletin Board.</span></h1>
-    <p class="lead"><span class="lang-ja">研究、技術、教育、雑談。匿名でスレッドを立て、気軽に返信できます。</span><span class="lang-en">Research, technology, education and conversation. Read and reply without an account.</span></p>
-    <p id="status" role="status" class="status">● <span class="lang-ja">接続を確認中</span><span class="lang-en">Checking connection</span></p>
-  </section>
-  <aside id="setup" class="setup" hidden><strong><span class="lang-ja">掲示板の公開準備中</span><span class="lang-en">Board setup in progress</span></strong>
-    <p><span class="lang-ja">投稿用バックエンドが未接続です。ページは表示できますが、投稿はバックエンド設定後に利用可能になります。</span><span class="lang-en">Posting storage is not connected yet. Viewing is available; submissions will open after the backend is configured.</span></p>
-  </aside>
-  <section id="list-view" class="panel">
-    <div class="panel-header"><div><span class="eyebrow">01 / THREADS</span><h2><span class="lang-ja">スレッド一覧</span><span class="lang-en">Threads</span></h2></div><button id="refresh" class="link-btn"><span class="lang-ja">更新</span><span class="lang-en">Refresh</span> ↻</button></div>
-    <div id="threads" aria-live="polite"><p class="empty"><span class="lang-ja">読み込み中…</span><span class="lang-en">Loading...</span></p></div>
-    <div class="compose"><span class="eyebrow">02 / NEW THREAD</span><h2><span class="lang-ja">新しいスレッド</span><span class="lang-en">New thread</span></h2>
-      <form id="thread-form" class="form">
-        <label for="topic"><span class="lang-ja">タイトル</span><span class="lang-en">Title</span></label><input id="topic" name="title" maxlength="100" required placeholder="タイトル / Title">
-        <label for="thread-name"><span class="lang-ja">名前（任意）</span><span class="lang-en">Name (optional)</span></label><input id="thread-name" name="author" maxlength="32" placeholder="名無しさん">
-        <label for="thread-body"><span class="lang-ja">本文</span><span class="lang-en">Message</span></label><textarea id="thread-body" name="body" maxlength="3000" rows="5" required></textarea>
-        <input class="honeypot" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <div id="thread-turnstile" class="challenge"></div>
-        <div class="form-bottom"><small><span class="lang-ja">アカウント不要。投稿前にスパム対策の確認が入ります。</span><span class="lang-en">No account required. Anti-spam verification is needed.</span></small><button id="thread-submit" type="submit" class="submit" disabled><span class="lang-ja">スレッドを立てる</span><span class="lang-en">Post thread</span> ↗</button></div>
-      </form>
+<div class="bbs-shell">
+  <nav class="top-links" aria-label="Navigation">
+    <a href="../">[HOME]</a>
+    <a href="#thread">[THREAD]</a>
+    <a href="#reply">[WRITE]</a>
+    <a href="mailto:mr.kiyotada@gmail.com?subject=BBS%20Report">[REPORT]</a>
+    <button id="lang-toggle" type="button" aria-label="Switch language">English</button>
+  </nav>
+  <header class="bbs-head">
+    <h1><span class="lang-ja">名無しの掲示板</span><span class="lang-en">Anonymous BBS</span></h1>
+    <p><span class="lang-ja">森清忠の個人サイトに併設された雑談掲示板です。研究・技術・教育・その他、自由にどうぞ。</span><span class="lang-en">An anonymous discussion board alongside Kiyotada Mori's personal site. Research, technology, education, and everything else.</span></p>
+    <p class="bbs-note"><span class="lang-ja">■ スレッドはひとつだけです。新規スレ立てはできません。投稿はアカウント不要です。</span><span class="lang-en">■ One ongoing thread. No account required; just write a reply.</span></p>
+    <p class="bbs-note"><span class="lang-ja">■ 個人情報・誹謗中傷・スパムは投稿しないでください。問題のある投稿は管理者が削除します。</span><span class="lang-en">■ No personal information, harassment, or spam. Moderators may delete posts.</span></p>
+  </header>
+  <hr>
+  <main id="thread">
+    <div class="thread-titlebar">
+      <h2><span class="lang-ja">★ 雑談スレッド ★</span><span class="lang-en">★ General discussion ★</span></h2>
+      <span id="connection-status" role="status"><span class="lang-ja">準備中</span><span class="lang-en">Setting up</span></span>
     </div>
-  </section>
-  <section id="detail-view" class="panel" hidden>
-    <div class="panel-header detail-head"><button id="back" class="link-btn">← <span class="lang-ja">スレッド一覧</span><span class="lang-en">All threads</span></button><span class="eyebrow">THREAD DETAIL</span><h2 id="thread-title"></h2><p id="thread-meta" class="dim"></p></div>
-    <div id="posts" aria-live="polite"></div>
-    <div class="compose"><span class="eyebrow">REPLY</span><h2><span class="lang-ja">返信する</span><span class="lang-en">Reply</span></h2>
-      <form id="reply-form" class="form">
-        <label for="reply-name"><span class="lang-ja">名前（任意）</span><span class="lang-en">Name (optional)</span></label><input id="reply-name" name="author" maxlength="32" placeholder="名無しさん">
-        <label for="reply-body"><span class="lang-ja">本文</span><span class="lang-en">Message</span></label><textarea id="reply-body" name="body" maxlength="3000" rows="5" required></textarea>
-        <input class="honeypot" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <div id="reply-turnstile" class="challenge"></div>
-        <div class="form-bottom"><small><span class="lang-ja">すべての返信は公開されます。</span><span class="lang-en">All replies are public.</span></small><button id="reply-submit" type="submit" class="submit" disabled><span class="lang-ja">書き込む</span><span class="lang-en">Reply</span> ↗</button></div>
-      </form>
+    <div class="thread-links">
+      <a href="#thread">[1-]</a> <a href="#reply">[<span class="lang-ja">レスを書く</span><span class="lang-en">Reply</span>]</a>
+      <button type="button" class="text-button" id="refresh-posts">[<span class="lang-ja">更新</span><span class="lang-en">Refresh</span>]</button>
+      <span id="post-count"></span>
     </div>
-  </section>
-  <p id="feedback" role="status" aria-live="polite"></p>
-  <footer><span class="lang-ja">匿名投稿・個人情報の無断掲載は禁止。運営者は必要に応じて投稿を削除します。</span><span class="lang-en">Anonymous posting. Do not post personal information. The moderator may remove posts.</span>
-    <a href="mailto:mr.kiyotada@gmail.com?subject=BBS%20Report"><span class="lang-ja">通報</span><span class="lang-en">Report</span> ↗</a>
-  </footer>
-</main>
+    <div id="setup-notice" class="notice" hidden>
+      <strong><span class="lang-ja">■ 現在は閲覧用プレビューです</span><span class="lang-en">■ Preview: posting not enabled yet</span></strong>
+      <p><span class="lang-ja">Cloudflare Workers・D1・Turnstileの設定が完了すると投稿できます。下のフォームは、それまで使用できません。</span><span class="lang-en">Posting requires configuring Cloudflare Workers, D1 and Turnstile. The form is disabled until setup is finished.</span></p>
+    </div>
+    <div id="post-list" aria-live="polite" class="post-list">
+      <article class="post" id="res-1">
+        <div class="post-head"><span class="post-number">1</span> <b class="post-author"><span class="lang-ja">掲示板案内</span><span class="lang-en">Board notice</span></b> <span class="post-date">—</span></div>
+        <p class="post-body"><span class="lang-ja">ここは匿名の雑談スレッドです。システムの初期案内として表示されています。</span><span class="lang-en">This is the single anonymous discussion thread. The initial notice is displayed by the system.</span></p>
+      </article>
+    </div>
+    <p id="feedback" role="status" aria-live="polite"></p>
+    <hr>
+    <section id="reply" class="reply">
+      <h3><span class="lang-ja">■ 書き込み</span><span class="lang-en">■ Post a reply</span></h3>
+      <form id="post-form">
+        <div class="form-field"><label for="post-name"><span class="lang-ja">名前：</span><span class="lang-en">Name:</span></label><input id="post-name" name="author" maxlength="32" placeholder="名無しさん" autocomplete="off"></div>
+        <div class="form-field"><label for="post-body"><span class="lang-ja">本文：</span><span class="lang-en">Message:</span></label><textarea required id="post-body" name="body" maxlength="2000" rows="6" placeholder=">>1&#10;こんにちは"></textarea></div>
+        <input type="text" tabindex="-1" name="website" autocomplete="off" class="honeypot" aria-hidden="true">
+        <div id="turnstile-container"></div>
+        <div class="form-actions"><button type="submit" id="post-button" disabled><span class="lang-ja">書き込む</span><span class="lang-en">Post</span></button> <span class="counter"><span id="char-counter">0</span> / 2000</span></div>
+      </form>
+      <p class="disclaimer"><span class="lang-ja">※ 名前を空欄にすると「名無しさん」になります。<code>&gt;&gt;レス番号</code>で返信できます。投稿は公開され、後から自分で編集できません。完全な追跡不能性は保証しません。</span><span class="lang-en">※ Leave name blank to use "名無しさん". Use <code>&gt;&gt;number</code> to refer to a post. Posts are public and cannot be edited by their authors. Perfect anonymity is not guaranteed.</span></p>
+    </section>
+  </main>
+  <hr>
+  <footer><a href="../">▲ <span class="lang-ja">個人サイトに戻る</span><span class="lang-en">Back to research website</span></a><span>© Kiyotada Mori BBS — independent from 2channel / 5channel</span></footer>
+</div>
 </body>
 </html>

@@ -1,59 +1,18 @@
-(()=>{
-"use strict";
-const $=id=>document.getElementById(id),cfg=window.BBS_CONFIG||{},api=(cfg.apiBase||"").replace(/\/$/,""),key=cfg.turnstileSitekey||"";
-const ready=api.startsWith("https://")&&!!key;
-let current=null;
-const tr=(ja,en)=>document.body.dataset.lang==="en"?en:ja;
-const text=(tag,value,cls)=>{const e=document.createElement(tag);e.textContent=value;if(cls)e.className=cls;return e};
-function language(lang){document.body.dataset.lang=lang;document.documentElement.lang=lang;$("lang-toggle").textContent=lang==="ja"?"EN":"JP";localStorage.setItem("site-language",lang)}
-language(localStorage.getItem("site-language")==="en"?"en":"ja");
-$("lang-toggle").onclick=()=>language(document.body.dataset.lang==="ja"?"en":"ja");
-function message(s){$("feedback").textContent=s}
-async function call(path,options={}){const response=await fetch(api+path,options);const data=await response.json();if(!response.ok)throw Error(data.error||"Request failed");return data}
-function date(sec){return new Date(sec*1000).toLocaleString(document.body.dataset.lang==="en"?"en-US":"ja-JP")}
-function show(detail){$("list-view").hidden=detail;$("detail-view").hidden=!detail}
-async function threads(){
- if(!ready)return;
- const data=await call("/api/threads");const container=$("threads");container.replaceChildren();
- if(!data.threads.length){container.append(text("p",tr("まだスレッドはありません。","No threads yet."),"empty"));return}
- data.threads.forEach((t,i)=>{
- const b=text("button","","thread");b.type="button";
- b.append(text("span",String(i+1).padStart(2,"0"),"thread-num"));
- const main=text("span","","thread-main");main.append(text("span",t.title,"thread-title"),text("span",date(t.last_activity)+" · "+t.author,"thread-meta"));
- b.append(main,text("span",tr("返信 ","Replies ")+t.reply_count,"thread-replies"));b.onclick=()=>open(t.id);container.append(b)
- })
-}
-async function open(id){
- current=id;show(true);history.replaceState(null,"","?thread="+encodeURIComponent(id));
- const d=await call("/api/threads/"+id);$("thread-title").textContent=d.thread.title;$("thread-meta").textContent=date(d.thread.created_at);
- $("posts").replaceChildren();d.posts.forEach((p,i)=>{
- const a=text("article","","post"),head=text("div","","post-meta");
- head.append(text("span",String(i+1)),text("span",p.author,"post-name"),text("span",date(p.created_at)));
- a.append(head,text("p",p.body,"post-message"));$("posts").append(a)
- })
-}
-$("back").onclick=async()=>{show(false);current=null;history.replaceState(null,"",location.pathname);await threads()};
-$("refresh").onclick=()=>threads().catch(e=>message(e.message));
-const tokens={thread:"",reply:""};
-function initChallenge(){
- window.bbsChallengeLoaded=()=>{for(const type of ["thread","reply"]){
- turnstile.render("#"+type+"-turnstile",{sitekey:key,callback:token=>{tokens[type]=token;$(type+"-submit").disabled=false},"expired-callback":()=>{tokens[type]="";$(type+"-submit").disabled=true}});
- }};
- const s=document.createElement("script");s.src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=bbsChallengeLoaded";s.async=true;document.head.appendChild(s)
-}
-async function post(ev,type){
- ev.preventDefault();const form=ev.target,fd=new FormData(form);
- if(!ready||!tokens[type])return;
- const data={title:(fd.get("title")||"").trim(),author:(fd.get("author")||"").trim()||"名無しさん",body:(fd.get("body")||"").trim(),website:fd.get("website")||"",turnstileToken:tokens[type]};
- if(!data.body)return;
- $(type+"-submit").disabled=true;
- try{
- const path=type==="thread"?"/api/threads":"/api/threads/"+current+"/posts";
- const r=await call(path,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)});
- form.reset();const id=type==="thread"?r.thread_id:current;await open(id);message(tr("投稿しました。","Posted."));
- }catch(e){message(e.message)}finally{tokens[type]="";if(window.turnstile)turnstile.reset();$(type+"-submit").disabled=true}
-}
-$("thread-form").onsubmit=e=>post(e,"thread");$("reply-form").onsubmit=e=>post(e,"reply");
-if(!ready){$("setup").hidden=false;$("status").textContent=tr("● 公開準備中","● Setup required");$("threads").replaceChildren(text("p",tr("投稿サーバーの設定が必要です。","Backend setup required."),"empty"));return}
-initChallenge();call("/api/health").then(async()=>{$("status").textContent=tr("● 匿名投稿可能","● Anonymous posting enabled");const id=new URLSearchParams(location.search).get("thread");if(id&&/^[0-9a-f-]{36}$/i.test(id))await open(id);else await threads()}).catch(e=>message(e.message));
+(()=>{"use strict";
+const $=id=>document.getElementById(id),cfg=window.BBS_CONFIG||{},api=String(cfg.apiBase||"").replace(/\/+$/,""),key=cfg.turnstileSitekey||"",ready=api.startsWith("https://")&&!!key;
+let widget=null,token="";const tr=(ja,en)=>document.body.dataset.lang==="en"?en:ja,el=(tag,text,cls)=>{const x=document.createElement(tag);x.textContent=text;if(cls)x.className=cls;return x};
+function language(l){document.body.dataset.lang=l;document.documentElement.lang=l;$("lang-toggle").textContent=l==="ja"?"English":"日本語";localStorage.setItem("site-language",l)}
+language(localStorage.getItem("site-language")==="en"?"en":"ja");$("lang-toggle").onclick=()=>language(document.body.dataset.lang==="ja"?"en":"ja");
+const status=s=>$("feedback").textContent=s,date=x=>new Date(x*1000).toLocaleString("ja-JP",{hour12:false});
+async function call(path,options={}){const r=await fetch(api+path,options),data=await r.json();if(!r.ok)throw Error(data.error||"Request failed");return data}
+function bodyContent(parent,content){const re=/>>([1-9]\d{0,5})/g;let idx=0,m;while((m=re.exec(content))){parent.append(document.createTextNode(content.slice(idx,m.index)));const a=el("a",m[0]);a.href="#res-"+m[1];parent.append(a);idx=re.lastIndex}parent.append(document.createTextNode(content.slice(idx)))}
+function display(posts){const list=$("post-list");list.replaceChildren();for(const p of posts){const a=el("article","","post");a.id="res-"+p.number;const h=el("div","","post-head");h.append(el("span",String(p.number),"post-number"),el("b",p.author||"名無しさん","post-author"),el("span",date(p.created_at),"post-date"));const b=el("p","","post-body");bodyContent(b,p.body);a.append(h,b);list.append(a)}
+ $("post-count").textContent=posts.length+" posts"}
+async function refresh(){const data=await call("/api/posts");display(data.posts);$("connection-status").textContent=tr("● 投稿受付中","● Online");}
+$("refresh-posts").onclick=()=>refresh().catch(e=>status(e.message));
+$("post-body").oninput=()=>{$("char-counter").textContent=$("post-body").value.length};
+function challenge(){window.bbsChallengeLoaded=()=>{widget=turnstile.render("#turnstile-container",{sitekey:key,callback:t=>{token=t;$("post-button").disabled=false},"expired-callback":()=>{token="";$("post-button").disabled=true},"error-callback":()=>{token="";$("post-button").disabled=true}})};const s=document.createElement("script");s.src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=bbsChallengeLoaded";s.async=true;document.head.append(s)}
+$("post-form").onsubmit=async e=>{e.preventDefault();if(!ready||!token)return;const form=e.target,fd=new FormData(form),payload={author:(fd.get("author")||"").trim()||"名無しさん",body:(fd.get("body")||"").trim(),website:fd.get("website"),turnstileToken:token};
+ if(!payload.body)return;$("post-button").disabled=true;try{await call("/api/posts",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});form.reset();$("char-counter").textContent="0";status(tr("投稿しました。","Posted."));await refresh()}catch(err){status(err.message)}finally{token="";if(window.turnstile&&widget!==null)turnstile.reset(widget)}};
+if(!ready){$("setup-notice").hidden=false;$("connection-status").textContent=tr("● 接続準備中","● Setup required");return}challenge();refresh().catch(e=>{$("connection-status").textContent="● Offline";status(e.message)});
 })();

@@ -6,10 +6,10 @@
 <meta name="theme-color" content="#efefef">
 <meta name="description" content="Anonymous Japanese bulletin board. One ongoing discussion, no account required.">
 <title>雑談スレッド - Kiyotada Mori BBS</title>
-<link rel="stylesheet" href="board.css?v=20261017-2ch">
+<link rel="stylesheet" href="board.css?v=20261017-clean">
 <link rel="stylesheet" href="../site-chrome.css?v=20261017-1">
-<script src="config.js" defer></script>
-<script src="board.js?v=20261017-2ch" defer></script>
+<script src="config.js?v=20261017-connected" defer></script>
+<script src="board.js?v=20261017-connected" defer></script>
 </head>
 <body data-lang="ja">
 <header class="site-header">
@@ -23,38 +23,22 @@
   </div>
 </header>
 <div class="bbs-shell">
-  <nav class="top-links" aria-label="Thread links">
-    <a href="#thread">[THREAD]</a>
-    <a href="#reply">[WRITE]</a>
-    <a href="mailto:mr.kiyotada@gmail.com?subject=BBS%20Report">[REPORT]</a>
-  </nav>
   <header class="bbs-head">
     <h1><span class="lang-ja">名無しの掲示板</span><span class="lang-en">Anonymous BBS</span></h1>
     <p><span class="lang-ja">森清忠の個人サイトに併設された雑談掲示板です。研究・技術・教育・その他、自由にどうぞ。</span><span class="lang-en">An anonymous discussion board alongside Kiyotada Mori's personal site. Research, technology, education, and everything else.</span></p>
-    <p class="bbs-note"><span class="lang-ja">■ スレッドはひとつだけです。新規スレ立てはできません。投稿はアカウント不要です。</span><span class="lang-en">■ One ongoing thread. No account required; just write a reply.</span></p>
-    <p class="bbs-note"><span class="lang-ja">■ 個人情報・誹謗中傷・スパムは投稿しないでください。問題のある投稿は管理者が削除します。</span><span class="lang-en">■ No personal information, harassment, or spam. Moderators may delete posts.</span></p>
+    <p class="bbs-note"><span class="lang-ja">※ 匿名・アカウント不要。個人情報の掲載や迷惑行為はお控えください。</span><span class="lang-en">Anonymous, no account needed. No personal information or spam.</span></p>
   </header>
   <hr>
   <main id="thread">
     <div class="thread-titlebar">
       <h2><span class="lang-ja">★ 雑談スレッド ★</span><span class="lang-en">★ General discussion ★</span></h2>
-      <span id="connection-status" role="status"><span class="lang-ja">準備中</span><span class="lang-en">Setting up</span></span>
+      <span id="connection-status" role="status"><span class="lang-ja">接続中</span><span class="lang-en">Connecting</span></span>
     </div>
     <div class="thread-links">
-      <a href="#thread">[1-]</a> <a href="#reply">[<span class="lang-ja">レスを書く</span><span class="lang-en">Reply</span>]</a>
-      <button type="button" class="text-button" id="refresh-posts">[<span class="lang-ja">更新</span><span class="lang-en">Refresh</span>]</button>
       <span id="post-count"></span>
+      <button type="button" class="text-button" id="refresh-posts">[<span class="lang-ja">更新</span><span class="lang-en">Refresh</span>]</button>
     </div>
-    <div id="setup-notice" class="notice" hidden>
-      <strong><span class="lang-ja">■ 現在は閲覧用プレビューです</span><span class="lang-en">■ Preview: posting not enabled yet</span></strong>
-      <p><span class="lang-ja">Cloudflare Workers・D1・Turnstileの設定が完了すると投稿できます。下のフォームは、それまで使用できません。</span><span class="lang-en">Posting requires configuring Cloudflare Workers, D1 and Turnstile. The form is disabled until setup is finished.</span></p>
-    </div>
-    <div id="post-list" aria-live="polite" class="post-list">
-      <article class="post" id="res-1">
-        <div class="post-head"><span class="post-number">1</span> <b class="post-author"><span class="lang-ja">掲示板案内</span><span class="lang-en">Board notice</span></b> <span class="post-date">—</span></div>
-        <p class="post-body"><span class="lang-ja">ここは匿名の雑談スレッドです。システムの初期案内として表示されています。</span><span class="lang-en">This is the single anonymous discussion thread. The initial notice is displayed by the system.</span></p>
-      </article>
-    </div>
+    <div id="post-list" aria-live="polite" class="post-list"><p class="empty"><span class="lang-ja">投稿を読み込み中…</span><span class="lang-en">Loading posts…</span></p></div>
     <p id="feedback" role="status" aria-live="polite"></p>
     <hr>
     <section id="reply" class="reply">
@@ -66,11 +50,9 @@
         <div id="turnstile-container"></div>
         <div class="form-actions"><button type="submit" id="post-button" disabled><span class="lang-ja">書き込む</span><span class="lang-en">Post</span></button> <span class="counter"><span id="char-counter">0</span> / 2000</span></div>
       </form>
-      <p class="disclaimer"><span class="lang-ja">※ 名前を空欄にすると「名無しさん」になります。<code>&gt;&gt;レス番号</code>で返信できます。投稿は公開され、後から自分で編集できません。完全な追跡不能性は保証しません。</span><span class="lang-en">※ Leave name blank to use "名無しさん". Use <code>&gt;&gt;number</code> to refer to a post. Posts are public and cannot be edited by their authors. Perfect anonymity is not guaranteed.</span></p>
+      <p class="disclaimer"><span class="lang-ja">名前が空欄なら「名無しさん」。<code>&gt;&gt;番号</code>で返信できます。投稿内容は公開されます。</span><span class="lang-en">Leave name blank for "名無しさん". Use <code>&gt;&gt;number</code> to reply. Posts are public.</span></p>
     </section>
   </main>
-  <hr>
-  <p class="bbs-legal"><span class="lang-ja">この掲示板は2ちゃんねる・5ちゃんねるとは無関係の個人運営サイトです。</span><span class="lang-en">This independently run board is not affiliated with 2channel or 5channel.</span></p>
 </div>
 <footer class="site-footer">
   <div class="section-shell footer-inner">

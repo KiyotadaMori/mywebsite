@@ -13,8 +13,6 @@ button:disabled{opacity:.5;cursor:not-allowed}
 body[data-lang="en"] .lang-ja{display:none}
 body[data-lang="en"] .lang-en{display:inline}
 .bbs-shell{max-width:1100px;padding:12px 22px 45px;margin:0 auto}
-.top-links{display:flex;gap:9px;flex-wrap:wrap;align-items:center;font-size:13px}
-.top-links button{border:0;color:var(--link);text-decoration:underline;background:transparent;font-size:13px;padding:0 5px}
 .bbs-head{padding:16px 0 9px}
 .bbs-head h1{font-size:30px;font-weight:bold;color:var(--title);line-height:1.4;margin:0 0 5px}
 .bbs-head p{margin:5px 0}
@@ -35,8 +33,6 @@ hr{height:0;border:0;border-top:1px solid #9ca4a4;margin:16px 0}
 .post-date{font-size:12px;color:#555}
 .post-body{margin:10px 0 4px 25px;white-space:pre-wrap;overflow-wrap:anywhere;font-size:15px;line-height:1.8}
 .post-body a{font-weight:bold;color:var(--link)}
-.notice{padding:10px 14px;background:#fff8d9;border:1px solid #a59f7b;margin:12px 0}
-.notice p{margin:5px 0 0;font-size:13px}
 #feedback{color:#b11b27;font-size:13px;min-height:1.4em}
 .reply{padding:6px 0 24px}
 .reply h3{font-size:17px;color:#335d85;margin:0 0 18px}
@@ -56,3 +52,6 @@ hr{height:0;border:0;border-top:1px solid #9ca4a4;margin:16px 0}
 footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;font-size:12px;color:#555}
 @media(max-width:600px){.bbs-shell{padding:12px 12px 35px}.bbs-head h1{font-size:26px}.thread-titlebar h2{font-size:18px}.post-body{margin-left:12px}.form-field{grid-template-columns:1fr;gap:4px}.form-actions,#turnstile-container{margin-left:0}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.empty{margin:14px 0;color:#555;font-size:13px}
+.thread-links{justify-content:space-between}

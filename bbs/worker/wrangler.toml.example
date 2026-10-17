@@ -1,0 +1,10 @@
+name = "kiyotada-bbs"
+main = "index.js"
+compatibility_date = "2026-10-01"
+[vars]
+PUBLIC_ORIGIN = "https://kiyotadamori.github.io"
+ALLOWED_HOSTNAME = "kiyotadamori.github.io"
+[[d1_databases]]
+binding = "DB"
+database_name = "kiyotada-bbs"
+database_id = "REPLACE_WITH_D1_UUID"

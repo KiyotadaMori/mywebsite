@@ -1524,3 +1524,6 @@ body[data-lang="ja"] .lang-ja{display:initial}
  .education-degree h4{font-size:29px;margin:26px 0 10px}
  .professional-block{padding-top:36px}
 }
+
+.nav-board{font-size:12px;font-weight:600;letter-spacing:.015em;color:var(--secondary);text-decoration:none;white-space:nowrap}
+.nav-board:hover{color:var(--blue)}

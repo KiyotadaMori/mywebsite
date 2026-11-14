@@ -508,6 +508,40 @@ body[data-lang="ja"] .lang-ja{display:initial}
   font-weight:500;
 }
 
+.publication-links{
+  display:flex;
+  align-items:baseline;
+  flex-wrap:wrap;
+  gap:12px 20px;
+}
+
+.publication-pdf-link,
+.publication-pdf-pending{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  margin-top:16px;
+  font-size:12px;
+  font-weight:600;
+}
+
+.publication-pdf-link{
+  color:var(--blue);
+  text-decoration:underline;
+  text-decoration-color:transparent;
+  text-underline-offset:3px;
+  transition:text-decoration-color .2s ease;
+}
+
+.publication-pdf-link:hover,
+.publication-pdf-link:focus-visible{
+  text-decoration-color:currentColor;
+}
+
+.publication-pdf-pending{
+  color:var(--secondary);
+}
+
 /* About */
 .about-section{background:var(--bg)}
 
